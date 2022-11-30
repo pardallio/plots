@@ -40,8 +40,8 @@ class data_2d:
         time_s=f.attrs["TIME"][0]
         f.close()
 
-        self._axis1=axis(len(E_rad),axis1,ax1name)
-        self._axis2=axis(len(E_rad[0]),axis2,ax2name)
+        self._axis1=axis(len(E_rad[0]),axis1,ax1name)
+        self._axis2=axis(len(E_rad),axis2,ax2name)
         self._data=E_rad
         self._name=dataname
         self._time_s=time_s
