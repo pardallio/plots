@@ -27,6 +27,20 @@ class os_data:
 
 
 class axis:
+    """
+    A class used to represent an axis object
+    ...
+
+    Attributes
+    ----------
+    nx : int
+        the number of grid poits along the axis
+    ax_arr : np.array
+        the array of points of the axis
+    name : str
+        the label of the axis
+    """
+
     def __init__(self,nx,lims,name):
         self._nx=nx
         self._name=name
@@ -46,6 +60,24 @@ class axis:
         return self._ax_arr
 
 class grid(os_data):
+    """
+    A class used to represent a grid data object
+
+    ...
+
+    Attributes
+    ----------
+    dims : int
+        a formatted string to print out what the animal says
+    axis : list of axes
+        a list of axis objects containg the spatial limits of the grid
+    data : np.array
+        the grid data
+    name : str
+        the label of the quantity in the grid
+    time_s : np.float
+        the timestamp of the grid file
+    """
     def __init__(self,fname):
         os_data.__init__(self,"grid")
         self._axis=[]
@@ -100,6 +132,20 @@ class grid(os_data):
 
 
 class raw(os_data):
+    """
+    A class used to represent a particles data object
+
+    ...
+
+    Attributes
+    ----------
+    data : dictionary of np.arrays
+        a dictionary containing the required quantities
+    label : dictionary of str
+        a dictionary containing the labels of required quantities
+    time_s : np.float
+        the timestamp of the grid file
+    """
     def __init__(self,fname,req_quants):
         os_data.__init__(self,"particles")
         self._data=dict.fromkeys(req_quants,None)
@@ -133,6 +179,19 @@ class raw(os_data):
 
 
 class track(os_data):
+    """
+    A class used to represent a tracks data object
+
+    ...
+
+    Attributes
+    ----------
+    data : dictionary of lists of np.arrays
+        a dictionary containing lists the required quantities for each particle
+    label : dictionary of str
+        a dictionary containing the labels of required quantities
+    """
+
     def __init__(self,fname,req_quants):
         os_data.__init__(self,"tracks-v2")
         self._data=dict.fromkeys(req_quants,None)
