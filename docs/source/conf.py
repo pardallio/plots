@@ -1,6 +1,12 @@
 import os
 import sys
+import mock
 sys.path.insert(0, os.path.abspath('../../osirispy/'))
+sys.path.insert(0, os.path.abspath('../..'))
+
+MOCK_MODULES = ['numpy']
+for mod_name in MOCK_MODULES:
+    sys.modules[mod_name] = mock.Mock()
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
