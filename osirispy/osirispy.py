@@ -262,7 +262,7 @@ class track(os_data):
         self._data=dict.fromkeys(req_quants,None)
         self._label=dict.fromkeys(req_quants,None)
         #open the file
-        f=h5py.File(file,"r")
+        f=h5py.File(fname,"r")
         #retrieve the available quantities, labels and units
         quants=[i.decode('UTF-8') for i in f.attrs["QUANTS"]][1:]
         labels=[i.decode('UTF-8') for i in f.attrs["LABELS"]][1:]
