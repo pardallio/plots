@@ -44,9 +44,10 @@ class axis:
     def __init__(self,nx,lims,name):
         self._nx=nx
         self._name=name
-        self._ax_arr=np.linspace(lims[0],lims[1],nx)
+        self._dx=(lims[1]-lims[0])/nx
+        self._limits=lims
+        self._ax_arr=np.arange(lims[0]+self._dx, lims[1]+0.5*self._dx, self._dx) - 0.5*self._dx
         
-    
     @property
     def nx(self):
         return self._nx
@@ -58,6 +59,14 @@ class axis:
     @property
     def ax_arr(self):
         return self._ax_arr
+    
+    @property
+    def dx(self):
+        return self._dx
+    
+    @property
+    def limits(self):
+        return self._limits
 
 class grid(os_data):
     """
@@ -103,6 +112,14 @@ class grid(os_data):
         self._data=dat
         self._name=dataname
         self._time_s=time_s
+
+
+    def extent(self):
+        ext=[]
+        for i, ax in enumerate(self.axis):
+            ext.append(ax.limits[0])
+            ext.append(ax.limits[1])
+        return tuple(ext)
         
     @property
     def axis(self):
