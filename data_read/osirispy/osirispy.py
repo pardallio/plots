@@ -114,7 +114,7 @@ class grid(os_data):
         self._time_s=time_s
 
 
-    def get_extent(self):
+    def extent(self):
         ext=[]
         for i, ax in enumerate(self.axis):
             ext.append(ax.limits[0])
